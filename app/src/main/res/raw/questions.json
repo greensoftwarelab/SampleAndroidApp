@@ -1,0 +1,47 @@
+[
+  {"question": "quem é este pokemon?",
+  "alternatives": [
+    "Moussa Marega",
+    "João Felix",
+    "Zinedine Zidade",
+    "Ronaldo"
+  ],
+    "image": "marega"
+  },
+  {"question": "quem é este pokemon?",
+    "alternatives": [
+      "Zaidu",
+      "Adebayor",
+      "Enzo Zidade",
+      "Manafa"
+    ],
+    "image": "zaidu"
+  },
+  {"question": "quem é este pokemon?",
+    "alternatives": [
+      "Zaidu",
+      "Adebayor",
+      "Enzo Zidade",
+      "Manafa"
+    ],
+    "image": "zaidu"
+  },
+  {"question": "quem é este pokemon?",
+    "alternatives": [
+      "Zaidu",
+      "Adebayor",
+      "Enzo Zidade",
+      "Manafa"
+    ],
+    "image": "zaidu"
+  },
+  {"question": "quem é este pokemon?",
+    "alternatives": [
+      "Zaidu",
+      "Adebayor",
+      "Enzo Zidade",
+      "Manafa"
+    ],
+    "image": "zaidu"
+  }
+]
