@@ -1,6 +1,7 @@
 package com.example.simplefootexam;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,21 +14,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.simplefootexam.model.Question;
 import com.example.simplefootexam.viewmodel.QuestionViewModel;
+
 
 /**
  * A fragment representing a list of Items.
  */
 public class QuestionListFragment extends Fragment {
 
-
-    private RecyclerView recyclerView;
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private QuestionViewModel questionViewModel;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -46,12 +44,12 @@ public class QuestionListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("on create normal");
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
         ViewModelProvider.AndroidViewModelFactory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(this.getActivity().getApplication());
         questionViewModel  = new ViewModelProvider(this, factory).get(QuestionViewModel.class);
-
     }
 
     @Override
@@ -60,16 +58,23 @@ public class QuestionListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_question_list, container, false);
         // Set the adapter
         if (view instanceof RecyclerView) {
+            System.out.println(questionViewModel.getQuestions().size());
             Context context = view.getContext();
-            recyclerView = (RecyclerView) view;
+            RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new QuestionCardRecyclerViewAdapter(questionViewModel.getQuestions()));
+            QuestionCardRecyclerViewAdapter adapter = new QuestionCardRecyclerViewAdapter(questionViewModel.getQuestions());
+            recyclerView.setAdapter(adapter);
         }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
 }

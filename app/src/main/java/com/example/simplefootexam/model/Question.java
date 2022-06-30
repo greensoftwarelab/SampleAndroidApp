@@ -1,5 +1,8 @@
 package com.example.simplefootexam.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.simplefootexam.R;
 
 import org.json.JSONArray;
@@ -9,39 +12,76 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question {
+public class Question implements Parcelable {
     public final String id;
     public final String question;
-    public final String answer;
     public final int image_id;
-    public String[] alternatives = new String[4];
+    public String[] alternatives;
 
     public Question(String id, int image_id) {
         this.id = id;
         this.image_id = image_id;
         this.question = "?";
-        this.answer = "?";
+        this.alternatives = new String[4];
     }
     public Question(String id, String question, int image_id, String answer) {
         this.id = id;
         this.image_id = image_id;
         this.question = question;
-        this.answer = answer;
+        this.alternatives = new String[4];
     }
+
+    protected Question(Parcel in) {
+        id = in.readString();
+        question = in.readString();
+        image_id = in.readInt();
+        in.readStringArray(alternatives);
+    }
+
 
     public Question(int id, JSONObject jo) throws JSONException, NoSuchFieldException, IllegalAccessException {
         this.id = String.valueOf(id);
         this.question = jo.getString("question");
         this.image_id =  R.drawable.class.getField(jo.getString("image")).getInt(null);  ;
         JSONArray alts = jo.getJSONArray("alternatives");
-        this.answer = alts.length()>0 ? alts.getString(0) : "?";
+        this.alternatives  = new String[4];
         for (int i = 0; i < alts.length() && i < 4; i++) {
             this.alternatives[i] = alts.get(i).toString();
         }
     }
 
+    public String getAnswer(){
+        return this.alternatives.length > 0 ? this.alternatives[0] : null;
+    }
+
+
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
+
     @Override
     public String toString() {
         return question + id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(question);
+        parcel.writeInt (image_id);
+        parcel.writeStringArray(alternatives);
     }
 }

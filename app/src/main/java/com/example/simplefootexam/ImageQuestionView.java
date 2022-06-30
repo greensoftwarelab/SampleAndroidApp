@@ -12,45 +12,34 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ImageQuestionView extends View {
-    private View mValue;
+public class ImageQuestionView extends LinearLayout {
     private ImageView mImage;
+    private TextView mTextViewTitle;
+
 
     public ImageQuestionView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        TypedArray a = context.obtainStyledAttributes(attrs,
+        TypedArray ta = context.obtainStyledAttributes(attrs,
                 R.styleable.QuestionV, 0, 0);
-        String titleText = a.getString(R.styleable.QuestionV_titleText);
-        @SuppressWarnings("ResourceAsColor")
-        int valueColor = a.getColor(R.styleable.QuestionV_valueColor,
-                android.R.color.holo_blue_light);
 
-        /*
+        int valueColor = ta.getColor(R.styleable.QuestionV_valueColor, getResources().getColor(R.color.black));
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.questionview, this, true);
 
-        TextView title = (TextView) getChildAt(0);
-        title.setText(titleText);
-
-        mValue = getChildAt(1);
-        mValue.setBackgroundColor(valueColor);
-
-        mImage = (ImageView) getChildAt(2);*/
+        setOrientation(LinearLayout.HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
+        mTextViewTitle = (TextView) getChildAt(0);
+        mTextViewTitle.setBackgroundColor(valueColor);
+        mTextViewTitle.setText("Question");
+        mImage = (ImageView) getChildAt(1);
     }
 
     public ImageQuestionView(Context context) {
         this(context, null);
     }
 
-    public void setValueColor(int color) {
-        mValue.setBackgroundColor(color);
-    }
-
-    public void setImageVisible(boolean visible) {
-        mImage.setVisibility(visible ? View.VISIBLE : View.GONE);
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {

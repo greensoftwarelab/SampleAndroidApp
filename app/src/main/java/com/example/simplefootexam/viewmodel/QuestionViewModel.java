@@ -2,13 +2,11 @@ package com.example.simplefootexam.viewmodel;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RawRes;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
-import com.example.simplefootexam.R;
 import com.example.simplefootexam.model.Question;
 import com.example.simplefootexam.utils.Utils;
 
@@ -23,16 +21,22 @@ import java.util.Map;
 
 public class QuestionViewModel extends AndroidViewModel {
 
-    private Map<String,Question> questions =  new HashMap<>();
-
+    private static Map<String,Question> questions =  new HashMap<>();
+    private static boolean isLoaded = false;
 
     public QuestionViewModel(@NonNull Application application) {
         super(application);
-        this.initQuestions(application.getApplicationContext());
+        System.out.println("initei");
+        initQuestions(application.getApplicationContext());
+        System.out.println("carguei " + this.questions.size());
     }
 
-    private void initQuestions(Context ctx){
-       JSONArray jsonArray = Utils.loadSONFile(ctx);
+    private static void initQuestions(Context ctx){
+        if(isLoaded){
+            return;
+        }
+        System.out.println("vou buscar mais");
+        JSONArray jsonArray = Utils.loadSONFile(ctx);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jo = null;
             try {
@@ -43,12 +47,11 @@ public class QuestionViewModel extends AndroidViewModel {
                 e.printStackTrace();
             }
         }
-
+        isLoaded = true;
     }
 
-
     public List<Question> getQuestions(){
-        return new ArrayList<>(this.questions.values());
+        return new ArrayList<>(questions.values());
     }
 
 
