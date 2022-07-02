@@ -44,7 +44,6 @@ public class QuestionListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("on create normal");
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -58,7 +57,6 @@ public class QuestionListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_question_list, container, false);
         // Set the adapter
         if (view instanceof RecyclerView) {
-            System.out.println(questionViewModel.getQuestions().size());
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {

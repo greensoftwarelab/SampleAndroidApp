@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -40,9 +41,11 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
     @Override
     public void onBindViewHolder(final QuestionViewHolder holder, int position) {
         holder.mIdView.setText(mValues.get(position).id);
-        //holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).image_id));
+        holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).image_id));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(160, 160);
+        holder.mImageView.setLayoutParams(layoutParams);
         //holder.mImageView.setImageBitmap(null);
-        Glide.with(holder.mView).load(mValues.get(position).image_id).into(holder.mImageView);
+        //Glide.with(holder.mView).load(mValues.get(position).image_id).into(holder.mImageView);
         holder.mQuestionview.setText(mValues.get(position).question);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,7 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
             mIdView =  view.findViewById(R.id.text_question_id);
             mImageView = view.findViewById(R.id.cardimage);
             mQuestionview = view.findViewById(R.id.text_question);
+
         }
     }
 }

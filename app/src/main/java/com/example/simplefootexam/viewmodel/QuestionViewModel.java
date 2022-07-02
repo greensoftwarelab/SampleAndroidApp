@@ -26,16 +26,13 @@ public class QuestionViewModel extends AndroidViewModel {
 
     public QuestionViewModel(@NonNull Application application) {
         super(application);
-        System.out.println("initei");
         initQuestions(application.getApplicationContext());
-        System.out.println("carguei " + this.questions.size());
     }
 
     private static void initQuestions(Context ctx){
         if(isLoaded){
             return;
         }
-        System.out.println("vou buscar mais");
         JSONArray jsonArray = Utils.loadSONFile(ctx);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jo = null;
