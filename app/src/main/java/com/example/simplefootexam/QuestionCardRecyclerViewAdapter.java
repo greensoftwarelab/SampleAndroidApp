@@ -3,7 +3,6 @@ package com.example.simplefootexam;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 import com.example.simplefootexam.model.Question;
-
 import java.util.List;
 
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Question}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<QuestionCardRecyclerViewAdapter.QuestionViewHolder> {
 
@@ -44,8 +39,6 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
         holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).image_id));
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(160, 160);
         holder.mImageView.setLayoutParams(layoutParams);
-        //holder.mImageView.setImageBitmap(null);
-        //Glide.with(holder.mView).load(mValues.get(position).image_id).into(holder.mImageView);
         holder.mQuestionview.setText(mValues.get(position).question);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
