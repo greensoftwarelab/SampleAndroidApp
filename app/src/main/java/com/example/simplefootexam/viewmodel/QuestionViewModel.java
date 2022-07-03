@@ -39,7 +39,7 @@ public class QuestionViewModel extends AndroidViewModel {
             try {
                 jo = jsonArray.getJSONObject(i);
                 Question q = new Question(i, jo);
-                questions.put(q.id, q);
+                questions.put(q.getId(), q);
             } catch (JSONException | NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }

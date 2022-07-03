@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.simplefootexam.model.Question;
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.List;
 public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<QuestionCardRecyclerViewAdapter.QuestionViewHolder> {
 
     private final List<Question> mValues;
-
 
     public QuestionCardRecyclerViewAdapter(List<Question> items) {
         mValues = items;
@@ -35,18 +33,13 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
 
     @Override
     public void onBindViewHolder(final QuestionViewHolder holder, int position) {
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).image_id));
-        //LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(160, 160);
-        //holder.mImageView.setLayoutParams(layoutParams);
-        holder.mQuestionview.setText(mValues.get(position).question);
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("question", mValues.get(position));
-                Navigation.findNavController(view).navigate(R.id.selectQuestionAction, bundle);
-            }
+        holder.mIdView.setText(mValues.get(position).getId());
+        holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).getImageId()));
+        holder.mQuestionview.setText(mValues.get(position).getQuestion());
+        holder.mView.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("question", mValues.get(position));
+            Navigation.findNavController(view).navigate(R.id.selectQuestionAction, bundle);
         });
     }
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,8 +74,8 @@ public class SingleQuestionFragment extends Fragment {
         buttonTopRight.setText(l.get(1));
         buttonBottomLeft.setText(l.get(2));
         buttonBottomRight.setText(l.get(3));
-        textViewQuestion.setText(question.question);
-        questionImage.setImageBitmap( BitmapFactory.decodeResource(this.getResources(), quest.image_id));
+        textViewQuestion.setText(question.getQuestion());
+        questionImage.setImageBitmap( BitmapFactory.decodeResource(this.getResources(), quest.getImageId()));
 
     }
 }
