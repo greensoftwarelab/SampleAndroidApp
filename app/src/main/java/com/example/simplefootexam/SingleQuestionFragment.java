@@ -24,12 +24,10 @@ import butterknife.OnClick;
 
 public class SingleQuestionFragment extends Fragment {
 
-
     @BindView(R.id.textViewQuestion)
     TextView textViewQuestion;
     @BindView(R.id.imageQuestion)
     ImageView questionImage;
-
     @BindView(R.id.button_top_left)
     CustomButton buttonTopLeft;
     @BindView(R.id.button_top_right)
@@ -67,7 +65,6 @@ public class SingleQuestionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Question q = getArguments().getParcelable("question");
         setQuestion(q);
-
     }
 
     public void setQuestion(Question quest) {

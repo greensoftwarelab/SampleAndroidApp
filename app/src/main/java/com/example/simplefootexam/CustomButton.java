@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 public class CustomButton extends AppCompatButton {
 
     private boolean isWrong =false;
-    private int color;
+    private int color_wrong;
 
     public CustomButton(Context context) {
         super(context);
@@ -22,8 +22,7 @@ public class CustomButton extends AppCompatButton {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.CustomButton, 0, 0);
-
-        color  = a.getColor(R.styleable.CustomButton_valueColor,
+        color_wrong = a.getColor(R.styleable.CustomButton_valueColor,
                 Color.RED);
     }
 
@@ -32,14 +31,11 @@ public class CustomButton extends AppCompatButton {
         super.onDraw(canvas);
         if(isWrong) {
             Paint p = new Paint();
-            p.setColor(color);
+            p.setColor(color_wrong);
             p.setStrokeWidth(10);
-            canvas.drawLine(0, (this.getHeight() / 2), this.getWidth(), (this.getHeight() / 2), p);
+            canvas.drawLine(0,this.getY(), this.getWidth(), this.getHeight(), p);
+            canvas.drawLine(0, this.getHeight(), this.getWidth(), this.getY(), p);
         }
-    }
-
-    public boolean isWrong() {
-        return isWrong;
     }
 
     public void setWrong(boolean wrong) {

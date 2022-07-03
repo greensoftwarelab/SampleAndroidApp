@@ -26,7 +26,6 @@ public class MainMenuFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(MainMenuFragment.this)
                         .navigate(R.id.action_FirstFragment_to_QuestionFragment);
-
             }
         });
     }

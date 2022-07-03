@@ -37,8 +37,8 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
     public void onBindViewHolder(final QuestionViewHolder holder, int position) {
         holder.mIdView.setText(mValues.get(position).id);
         holder.mImageView.setImageBitmap( BitmapFactory.decodeResource(holder.mView.getResources(), mValues.get(position).image_id));
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(160, 160);
-        holder.mImageView.setLayoutParams(layoutParams);
+        //LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(160, 160);
+        //holder.mImageView.setLayoutParams(layoutParams);
         holder.mQuestionview.setText(mValues.get(position).question);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
