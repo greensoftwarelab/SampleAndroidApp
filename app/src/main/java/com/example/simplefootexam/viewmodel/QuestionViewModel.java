@@ -3,14 +3,10 @@ package com.example.simplefootexam.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-
 import com.example.simplefootexam.model.Question;
 import com.example.simplefootexam.utils.Utils;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,19 +14,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.hunter.library.debug.HunterDebug;
+import android.content.Context;
 
 public class QuestionViewModel extends AndroidViewModel {
 
-    private static Map<String,Question> questions =  new HashMap<>();
+    private static Map<String, Question> questions = new HashMap<>();
+
     private static boolean isLoaded = false;
 
+    @HunterDebug
     public QuestionViewModel(@NonNull Application application) {
         super(application);
         initQuestions(application.getApplicationContext());
     }
 
-    private static void initQuestions(Context ctx){
-        if(isLoaded){
+    @HunterDebug
+    private static void initQuestions(Context ctx) {
+        if (isLoaded) {
             return;
         }
         JSONArray jsonArray = Utils.loadSONFile(ctx);
@@ -47,9 +48,8 @@ public class QuestionViewModel extends AndroidViewModel {
         isLoaded = true;
     }
 
-    public List<Question> getQuestions(){
+    @HunterDebug
+    public List<Question> getQuestions() {
         return new ArrayList<>(questions.values());
     }
-
-
 }

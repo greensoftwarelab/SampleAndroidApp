@@ -22,3 +22,11 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+buildscript{
+	dependencies{
+classpath 'io.github.raphael28:hunter-debug-plugin:1.0.1'
+classpath 'io.github.raphael28:hunter-transform:0.9.8'
+
+}
+}
+allprojects {repositories {flatDir { dirs 'libs'}}}
