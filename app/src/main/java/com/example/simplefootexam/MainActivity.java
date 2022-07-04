@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    @HunterDebug
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {

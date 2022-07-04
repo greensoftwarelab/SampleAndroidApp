@@ -16,7 +16,6 @@ public class CustomButton extends AppCompatButton {
 
     private int color_wrong;
 
-    @HunterDebug
     public CustomButton(Context context) {
         super(context);
     }
@@ -41,7 +40,6 @@ public class CustomButton extends AppCompatButton {
         }
     }
 
-    @HunterDebug
     public void setWrong(boolean wrong) {
         isWrong = wrong;
     }

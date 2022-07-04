@@ -23,7 +23,6 @@ public class QuestionListFragment extends Fragment {
 
     private QuestionViewModel questionViewModel;
 
-    @HunterDebug
     public QuestionListFragment() {
     }
 

@@ -18,7 +18,6 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
 
     private final List<Question> mValues;
 
-    @HunterDebug
     public QuestionCardRecyclerViewAdapter(List<Question> items) {
         mValues = items;
     }
@@ -44,7 +43,6 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
     }
 
     @Override
-    @HunterDebug
     public int getItemCount() {
         return mValues.size();
     }
@@ -59,7 +57,6 @@ public class QuestionCardRecyclerViewAdapter extends RecyclerView.Adapter<Questi
 
         public final ImageView mImageView;
 
-        @HunterDebug
         public QuestionViewHolder(View view) {
             super(view);
             mView = view;
