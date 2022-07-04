@@ -30,7 +30,7 @@ public class QuestionViewModel extends AndroidViewModel {
     }
 
     @HunterDebug
-    private static void initQuestions(Context ctx) {
+    private void initQuestions(Context ctx) {
         if (isLoaded) {
             return;
         }
