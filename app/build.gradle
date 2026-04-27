@@ -54,5 +54,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 dependencies{
-	implementation 'io.github.greensoftwarelab:hunter-emanafa-library:1.0.1'
+	implementation 'io.github.greensoftwarelab:hunter-emanafa-library:1.0.6'
 	}

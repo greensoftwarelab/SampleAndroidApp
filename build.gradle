@@ -24,8 +24,8 @@ task clean(type: Delete) {
 }
 buildscript{
 	dependencies{
-classpath 'io.github.raphael28:hunter-debug-plugin:1.0.1'
-classpath 'io.github.raphael28:hunter-transform:0.9.8'
+classpath 'io.github.greensoftwarelab:hunter-debug-plugin:1.0.5'
+classpath 'io.github.greensoftwarelab:hunter-transform:0.9.11'
 
 }
 }
